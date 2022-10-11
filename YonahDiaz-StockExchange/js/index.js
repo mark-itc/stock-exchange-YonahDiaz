@@ -22,7 +22,7 @@ function presentResults(result) {
       result[i].name + " " + "(" + result[i].symbol + ")";
     searchResults.setAttribute(
       "href",
-      "/company.html?symbol=" + result[i].symbol
+      "company.html?symbol=" + result[i].symbol
     );
     resultContainer.appendChild(searchResults);
   }
@@ -37,7 +37,6 @@ button.addEventListener(
       "https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/search?query=" +
       searchTerm +
       "&limit=10&exchange=NASDAQ";
-
     stockSearch(url);
   })
 );
