@@ -47,8 +47,6 @@ function presentData(result) {
   let companyChange = document.createElement("div");
   if (+result.profile.changesPercentage < 0) {
     companyChange.classList.add("change-red");
-  } else if (+result.profile.changesPercentage == 0) {
-    companyChange.classList.add("change-black");
   } else {
     companyChange.classList.add("change-green");
   }
@@ -91,8 +89,8 @@ function chartData(historyResult) {
     datasets: [
       {
         label: "Stock Price History",
-        backgroundColor: "rgb(255, 99, 132)",
-        borderColor: "rgb(255, 99, 132)",
+        backgroundColor: "rgb(0, 0, 0)",
+        borderColor: "rgb(0, 0, 0)",
         data: [
           history[19].close,
           history[18].close,
