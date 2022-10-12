@@ -62,28 +62,15 @@ getCompanyProfileAndHistory(url, historyUrl);
 
 function chartData(historyResult) {
   let history = historyResult.historical;
-  const labels = [
-    history[19].date,
-    history[18].date,
-    history[17].date,
-    history[16].date,
-    history[15].date,
-    history[14].date,
-    history[13].date,
-    history[12].date,
-    history[11].date,
-    history[10].date,
-    history[9].date,
-    history[8].date,
-    history[7].date,
-    history[6].date,
-    history[5].date,
-    history[4].date,
-    history[3].date,
-    history[2].date,
-    history[1].date,
-    history[0].date,
-  ];
+  let historyDate = [];
+  for (let i = 0; i < history.length; i++) {
+    historyDate.push(history[i].date);
+  }
+  const labels = historyDate.reverse();
+  let historyClose = [];
+  for (let i = 0; i < history.length; i++) {
+    historyClose.push(history[i].close);
+  }
   const data = {
     labels: labels,
     datasets: [
@@ -91,36 +78,40 @@ function chartData(historyResult) {
         label: "Stock Price History",
         backgroundColor: "rgb(0, 0, 0)",
         borderColor: "rgb(0, 0, 0)",
-        data: [
-          history[19].close,
-          history[18].close,
-          history[17].close,
-          history[16].close,
-          history[15].close,
-          history[14].close,
-          history[13].close,
-          history[12].close,
-          history[11].close,
-          history[10].close,
-          history[9].close,
-          history[8].close,
-          history[7].close,
-          history[6].close,
-          history[5].close,
-          history[4].close,
-          history[3].close,
-          history[2].close,
-          history[1].close,
-          history[0].close,
-        ],
+        data: historyClose.reverse(),
       },
     ],
   };
-
+  const chartAreaBorder = {
+    id: "chartAreaBorder",
+    beforeDraw(chart, args, options) {
+      const {
+        ctx,
+        chartArea: { left, top, width, height },
+      } = chart;
+      ctx.save();
+      ctx.strokeStyle = options.borderColor;
+      ctx.lineWidth = options.borderWidth;
+      ctx.setLineDash(options.borderDash || []);
+      ctx.lineDashOffset = options.borderDashOffset;
+      ctx.strokeRect(left, top, width, height);
+      ctx.restore();
+    },
+  };
   const config = {
     type: "line",
     data: data,
-    options: {},
+    options: {
+      plugins: {
+        chartAreaBorder: {
+          borderColor: "gray",
+          borderWidth: 2,
+          borderDash: [5, 5],
+          borderDashOffset: 2,
+        },
+      },
+    },
+    plugins: [chartAreaBorder],
   };
   const myChart = new Chart(document.getElementById("myChart"), config);
   console.log(myChart);
