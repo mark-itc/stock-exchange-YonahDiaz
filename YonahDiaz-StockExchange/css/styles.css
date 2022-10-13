@@ -195,3 +195,39 @@ results:hover {
   width: 30px;
   height: 30px;
 }
+
+.hwrap {
+  overflow: hidden;
+  border-bottom: 4px solid gray;
+  border-top: 2px solid gray;
+  background-color: black;
+  color: white;
+  height: 50px;
+}
+
+.hmove {
+  display: flex;
+}
+
+.hitem {
+  flex-shrink: 0;
+  width: 25%;
+  box-sizing: border-box;
+  padding: 10px;
+  text-align: center;
+}
+
+@keyframes tickerh {
+  0% {
+    transform: translate3d(100%, 0, 0);
+  }
+  100% {
+    transform: translate3d(-400%, 0, 0);
+  }
+}
+.hmove {
+  animation: tickerh linear 50s infinite;
+}
+.hmove:hover {
+  animation-play-state: paused;
+}
