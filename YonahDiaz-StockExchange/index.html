@@ -16,28 +16,10 @@
   </head>
   <body>
     <div class="hwrap" id="hwrap"></div>
-    <nav class="navbar navbar-light bg-light">
-      <h1 class="title">Search Nasdaq Stocks</h1>
-      <form class="form-inline navbar-items">
-        <input
-          id="input"
-          class="form-control mr-sm-2 input"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        />
-        <button
-          id="button"
-          class="btn btn-outline-success my-2 my-sm-0 button"
-          type="button"
-        >
-          Search
-        </button>
-      </form>
-    </nav>
-    <div id="res-cont" class="result-container"></div>
+    <div class="result-container" id="res-cont"></div>
     <div class="loader" id="loader"></div>
     <script src="js/marquee.js"></script>
-    <script src="js/index.js"></script>
+    <script type="module" src="js/searchform.js"></script>
+    <script type="module" src="js/searchresult.js"></script>
   </body>
 </html>

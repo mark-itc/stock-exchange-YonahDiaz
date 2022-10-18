@@ -5,6 +5,11 @@
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
+.navbar {
+  position: absolute;
+  top: 50px;
+}
+
 .navbar-items {
   display: flex;
 }
@@ -24,7 +29,8 @@
   border-color: black;
 }
 .result-container {
-  position: relative;
+  position: absolute;
+  top: 200px;
   display: flex;
   flex-direction: column;
   margin-left: 32px;

@@ -29,6 +29,6 @@ let marqueeHwrap = document.getElementById("hwrap");
 let showMarquee = new Marquee(marqueeHwrap);
 
 let marqueeDataUrl =
-  "https://financialmodelingprep.com/api/v3/stock-screener?marketCapMoreThan=1000000000&betaMoreThan=1&volumeMoreThan=10000&sector=Technology&exchange=NASDAQ&dividendMoreThan=0&limit=100&apikey=6d111f223ec978a64915097363219394";
+  "https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/stock-screener?exchange=NASDAQ&limit=${limit} ";
 
 showMarquee.marqueeDataSearch(marqueeDataUrl);
