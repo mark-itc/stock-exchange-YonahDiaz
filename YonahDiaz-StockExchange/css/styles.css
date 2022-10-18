@@ -39,7 +39,7 @@
   height: 80vh;
 }
 .results {
-  width: auto;
+  width: 75vw;
   height: auto;
   text-decoration: none;
   display: flex;
@@ -48,6 +48,11 @@
   color: #54b3d6;
   margin-top: 25px;
   transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+mark {
+  margin: 0;
+  padding: 0;
 }
 
 results:hover {

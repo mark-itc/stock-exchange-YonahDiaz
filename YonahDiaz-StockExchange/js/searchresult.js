@@ -12,6 +12,7 @@ class Result {
         const decorationResponse = await fetch(decorationUrl);
         const decorationResult = await decorationResponse.json();
         let searchResults = document.createElement("a");
+        searchResults.setAttribute("id", "search-results");
         searchResults.classList.add("results");
         searchResults.innerHTML =
           result[i].name + " " + "(" + result[i].symbol + ")";
@@ -19,6 +20,12 @@ class Result {
           "href",
           "company.html?symbol=" + result[i].symbol
         );
+        if (this.searchTerm !== "") {
+          let text = searchResults.innerHTML;
+          let re = new RegExp(this.searchTerm, "g");
+          let newText = text.replace(re, `<mark>${this.searchTerm}</mark>`);
+          searchResults.innerHTML = newText;
+        }
         this.resultContainer.appendChild(searchResults);
         let decorationChange = document.createElement("div");
         if (+decorationResult.profile.changesPercentage < 0) {
@@ -38,8 +45,10 @@ class Result {
       }
     }
   }
+
   async stockSearch(url) {
     this.loader = document.getElementById("loader");
+    this.searchTerm = document.getElementById("input").value;
     try {
       loader.setAttribute("style", "display:block;");
       const response = await fetch(url);

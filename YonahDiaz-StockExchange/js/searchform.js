@@ -1,8 +1,8 @@
 import { resultsFunc } from "./searchresult.js";
+
 class Form {
   constructor() {}
   showElementsFunc(body, navBar, title, form, input, button) {
-    console.log(body);
     navBar.classList.add("navbar", "navbar-light", "bg-light");
     document.body.appendChild(navBar);
     title.classList.add("title");
@@ -27,18 +27,9 @@ class Form {
     button.setAttribute("type", "button");
     button.innerText = "Search";
     form.appendChild(button);
-    const resultContainer = document.getElementById("res-cont");
-    button.addEventListener("click", () => {
-      resultContainer.innerHTML = "";
-      let searchTerm = document.getElementById("input").value;
-      let url =
-        "https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/search?query=" +
-        searchTerm +
-        "&limit=10&exchange=NASDAQ";
-      resultsFunc.stockSearch(url);
-    });
   }
 }
+
 let showElements = new Form();
 let navBar = document.createElement("nav");
 let title = document.createElement("h1");
@@ -47,3 +38,14 @@ let input = document.createElement("input");
 let button = document.createElement("button");
 let body = document.getElementsByTagName("body");
 showElements.showElementsFunc(body, navBar, title, form, input, button);
+
+button.addEventListener("click", () => {
+  let searchTerm = document.getElementById("input").value;
+  let resultContainer = document.getElementById("res-cont");
+  resultContainer.innerHTML = "";
+  let url =
+    "https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/search?query=" +
+    searchTerm +
+    "&limit=10&exchange=NASDAQ";
+  resultsFunc.stockSearch(url);
+});
